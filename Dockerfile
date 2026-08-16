@@ -7,6 +7,9 @@ LABEL org.opencontainers.image.licenses="MIT"
 ARG UID=1001
 ARG GID=1001
 
+# Default timezone
+ENV TZ=UTC
+
 # Install tools
 RUN apk add --no-cache \
     bash \
@@ -15,7 +18,8 @@ RUN apk add --no-cache \
     bind-tools \
     netcat-openbsd \
     gettext \
-    ca-certificates
+    ca-certificates \
+    tzdata
 
 # Create non-root user
 RUN addgroup \
